@@ -1,8 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import { colors } from '../theme/colors';
 import HomeScreen from '../screens/HomeScreen';
+import AttendanceScreen from '../screens/AttendanceScreen';
 import LeaveScreen from '../screens/LeaveScreen';
 import PayrollScreen from '../screens/PayrollScreen';
 import TeamScreen from '../screens/TeamScreen';
@@ -13,8 +14,13 @@ const Tab = createBottomTabNavigator();
 
 const getIcon = (label: string, color: string) => {
   const icons: Record<string, string> = {
-    Home: '🏠', Leave: '📅', Payroll: '💰',
-    Team: '👥', Report: '📊', Branch: '🏢',
+    Home: '🏠',
+    Attendance: '🗓️',
+    Leave: '📅',
+    Payroll: '💰',
+    Team: '👥',
+    Report: '📊',
+    Branch: '🏢',
   };
   return <Text style={{ fontSize: 18, color }}>{icons[label]}</Text>;
 };
@@ -32,10 +38,13 @@ const AppNavigator = ({ onLogout }: { onLogout: () => void }) => {
         },
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
-        tabBarLabelStyle: { fontSize: 11, marginBottom: 4 },
+        tabBarLabelStyle: { fontSize: 10, marginBottom: 4 },
       })}>
       <Tab.Screen name="Home">
         {() => <HomeScreen onLogout={onLogout} />}
+      </Tab.Screen>
+      <Tab.Screen name="Attendance">
+        {() => <AttendanceScreen onLogout={onLogout} />}
       </Tab.Screen>
       <Tab.Screen name="Leave">
         {() => <LeaveScreen onLogout={onLogout} />}

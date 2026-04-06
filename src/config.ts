@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://attandance-management-payroll-xm3s.onrender.com';
